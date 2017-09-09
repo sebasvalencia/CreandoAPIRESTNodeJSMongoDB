@@ -13,3 +13,24 @@ Creamos el archivo idnex.js
 es el punto de entrada de la aplicacion,
 importamos express y creamos un servidor
 para correrlo en consola node index.js
+
+Instalando body-parser y nodemon:
+npm i -S body-parser
+Permite q cuando hagamos peticiones rest
+pueda parsear el cuerpo de la peticion podamos recoger los datos
+para por ejemplo ingresarlos a una bd
+Funciona como middleware
+
+importamos el bodyParser
+y permitimos q express lo use
+Porbamos
+
+instalalos nodemon para que no tengamos q reiniciar el servidor
+manualmente
+npm i -D nodemon // se instala en devDependencies del package.json
+
+para usarlos en script del package.json
+colocar :
+"start": "nodemon index.js",
+
+y en la consola npm start
