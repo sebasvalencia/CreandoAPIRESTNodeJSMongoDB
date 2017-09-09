@@ -100,3 +100,32 @@ seleccionar los params:
   photo: 'mack.png',
   category: 'laptop'
 Mirar la respuesta
+{ name: 'Mac',
+  prrice: '200',
+  photo: 'mack.png',
+  category: 'laptop' }
+
+
+Cómo instalar MongoDB y utilizar Mongoose como ORM/ODM::
+descargar e instalar mongodb
+npm i -S mongoose
+Antes crear dos carpetas: D:\data\db
+arrancar mongo en consola escribe mongod
+en otra terminal ecribir mongo y ya estariamos en la shell
+
+Necesitamos un driver par esto usamos mongoose
+lo importamos const mongoose = require('mongoose');
+//Primero conectamos la bd
+//el primer parametro es la bd mongodb://localhost:27017/nombre_bd
+//segundo parametro callback
+mongoose.connect('mongodb://localhost:27017/shop', (err, res)=>{
+  if(err){
+    //throw err;
+    return console.log(`Error al conectar a la BD ${err}`);
+  }else{
+    console.log("Conexion a la BD establecida...");
+    app.listen(port, () => {
+      console.log(`API REST corriendo en http:localhost:${port}`);
+    });
+  }
+});
