@@ -1,3 +1,4 @@
+Instalar express y hola mundo::
 en la terminal escribimos npm init
 enter en todos los campos y completamos los campos autor y licencia MIT
 genera un archivo package.json con la información suministrada
@@ -14,7 +15,7 @@ es el punto de entrada de la aplicacion,
 importamos express y creamos un servidor
 para correrlo en consola node index.js
 
-Instalando body-parser y nodemon:
+Instalando body-parser y nodemon::
 npm i -S body-parser
 Permite q cuando hagamos peticiones rest
 pueda parsear el cuerpo de la peticion podamos recoger los datos
@@ -34,3 +35,21 @@ colocar :
 "start": "nodemon index.js",
 
 y en la consola npm start
+
+Cómo crear un endpoint con GET y parámetros en tu API REST::
+q escuche el api rest la ruta en concreto
+
+
+app.get('/hola/:name', (req, res) => {
+    res.send({mensaje: `Hola  ${req.params.name}`  });
+});
+
+los parametros se ven con el objecto req (request)
+
+app.get('/hola', (req, res) => {
+    res.send({mensaje:"Hola Mundo"});
+});
+
+app.get('/hola/:name', (req, res) => {
+    res.send({mensaje: `Hola  ${req.params.name}`  });
+});
