@@ -56,7 +56,7 @@ app.get('/hola/:name', (req, res) => {
     res.send({mensaje: `Hola  ${req.params.name}`  });
 });
 
-Metodos HTTP y codigos de respuesta utilizados en la API REST:
+Metodos HTTP y codigos de respuesta utilizados en la API REST::
 
 para q el api sea restfull
 get
@@ -89,3 +89,14 @@ Los codigos de respuesta son los q devuelve el servidor
 
 Las peticiones tienen un header (POST,PUT)
 cache, autorizado, navegador
+
+Cómo usar POSTMAN para testear tu API REST::
+Instalar psotman q es un plugin de chrome
+Seleccionar POST
+colocar la ruta:http://localhost:3001/api/product
+seleccionar los params:
+  name: 'Mac',
+  prrice: '200',
+  photo: 'mack.png',
+  category: 'laptop'
+Mirar la respuesta
