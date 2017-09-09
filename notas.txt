@@ -1,0 +1,15 @@
+en la terminal escribimos npm init
+enter en todos los campos y completamos los campos autor y licencia MIT
+genera un archivo package.json con la información suministrada
+
+Crear el archivo .gitignore y escribir:
+# dependencies
+/node_modules
+
+Ahora instalar express nos facilita el desarrollo para el http
+npm install express --save
+
+Creamos el archivo idnex.js
+es el punto de entrada de la aplicacion,
+importamos express y creamos un servidor
+para correrlo en consola node index.js
