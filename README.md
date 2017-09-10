@@ -101,21 +101,21 @@ mongo
 
 ## REFACTORIZACION
  separamos en diferentes carpetas
- __***index.js -> ***__
+ __***index.js->***__
  Pedir la informacion, se conecta a la BD y pone a escuchar nuestro servidor de express usa config.js
- 
- __***config.js -> ***__
+
+ __***config.js->***__
  Tiene un objecto js que tiene datos del puerto y servidor de bd
 
- __***app.js -> ***__
+ __***app.js->***__
  tiene la configuracion de express usamos el modulo api que esta en Routes/index.js
 
- __***routers/index.js -> ***__
+ __***routers/index.js->***__
  Tenemos las rutas y usamos un router de express usamos controllers/product.js
 
- __***controllers/product.js -> ***__
+ __***controllers/product.js->***__
  Los controladores que son las funciones que se comunican con node y la BD llaman a el modelo
  del producto models/product.js
 
- __***models/product.js -> ***__
+ __***models/product.js->***__
  tiene la definicion del modelo
