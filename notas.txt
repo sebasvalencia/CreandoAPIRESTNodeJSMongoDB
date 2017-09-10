@@ -129,3 +129,15 @@ mongoose.connect('mongodb://localhost:27017/shop', (err, res)=>{
     });
   }
 });
+
+
+Cómo almacenar datos en MongoDB con HTTP POST en tu API::
+Crear modelo product
+se hace con schema
+
+Creamos una carpeta modelos que tendra el schema de product
+product.js
+
+luego lo importamos en el index.js y en el metodo post
+le seteamos los valores que vienen en el req.body.parametro
+usamos el metodo save que tiene dos parametros un error y un callback

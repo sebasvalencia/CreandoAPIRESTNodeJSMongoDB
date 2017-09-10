@@ -4,6 +4,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+//importando el esquema
+const Product = require('./models/product');
+
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -25,7 +28,7 @@ app.get('/api/product/:productId', (req, res) => {
 
 //POST subir productos
 app.post('/api/product', (req,res) => {
-  console.log(req.body);//acceder al cuerpo del mensaje gracias a bodyParser
+  //console.log(req.body);//acceder al cuerpo del mensaje gracias a bodyParser
   /*
   { name: 'Mac',
     prrice: '200',
@@ -33,7 +36,24 @@ app.post('/api/product', (req,res) => {
     category: 'laptop' }
   */
   //res.send(200, {message: 'El producto se ha recibido'});
-  res.status(200).send({message: 'El producto se ha recibido'});
+  //res.status(200).send({message: 'El producto se ha recibido'});
+  console.log("POST /api/product");
+  console.log(req.body);//acceder al cuerpo del mensaje gracias a bodyParser
+  let product = new Product();
+  product.name = req.body.name;
+  product.picture = req.body.picture;
+  product.price = req.body.price;
+  product.category = req.body.category;
+  product.description = req.body.description;
+
+  product.save((err, productStored) => {
+    if(err){
+      res.status(500).send({message:`Fallo al guardar en al BD ${err}`})
+    }else{
+      res.status(200).send({product: productStored});
+    }
+  });
+
 });
 
 //PUT actualizar producto
