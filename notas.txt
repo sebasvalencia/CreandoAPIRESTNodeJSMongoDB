@@ -10,7 +10,7 @@ Crear el archivo .gitignore y escribir:
 Ahora instalar express nos facilita el desarrollo para el http
 npm install express --save
 
-Creamos el archivo idnex.js
+Creamos el archivo index.js
 es el punto de entrada de la aplicacion,
 importamos express y creamos un servidor
 para correrlo en consola node index.js
@@ -179,3 +179,13 @@ Product.findByIdAndUpdate(productId, update, (err, productUpdated) =>{
   if(err) res.status(500).send({message: `Error al actualizar el producto: ${err}`});
 
   res.status(200).send({product: productUpdated});
+
+REFACTORIZACION::
+separamos en diferentes carpetas
+index.js -> Pedir la informacion, se conecta a la BD y pone a escuchar nuestro servidor de express usa config.js
+config.js -> Tiene un objecto js que tiene datos del puerto y servidor de bd
+app.js -> tiene la configuracion de express usamos el modulo api que esta en Routes/index.js
+routers/index.js -> Tenemos las rutas y usamos un router de express usamos controllers/product.js
+controllers/product.js -> Los controladores que son las funciones que se comunican con node y la BD llaman a el modelo
+del producto models/product.js
+models/product.js -> tiene la definicion del modelo
