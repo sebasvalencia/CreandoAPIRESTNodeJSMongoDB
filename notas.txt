@@ -141,3 +141,18 @@ product.js
 luego lo importamos en el index.js y en el metodo post
 le seteamos los valores que vienen en el req.body.parametro
 usamos el metodo save que tiene dos parametros un error y un callback
+
+Como devolver datos con GET desde un API REST::
+let productId = req.params.productId;
+Product.findById(productId, (err, product) => {
+    if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`});
+    if(!product) return res.status(400).send({message: `El producto no existe`});
+
+    res.status(200).send({product}); //cuando product: product se puede escribir solo product
+
+Todo
+    Product.find({}, (err, poducts) => {
+      if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`});
+      if(!products) return res.status(404).send({message: `No existen productos`});
+      res.send(200, {products});
+    });
