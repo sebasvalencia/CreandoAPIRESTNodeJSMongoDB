@@ -156,3 +156,26 @@ Todo
       if(!products) return res.status(404).send({message: `No existen productos`});
       res.send(200, {products});
     });
+
+Como implmentar DELETE y UPDATE de registros en la API REST::
+DELETE
+let productId = req.params.productId;
+
+Product.findById(productId, (err, product) => {
+  if(err) res.status(500).send({message: `Error al borrar el producto: ${err}`});
+
+  product.remove(err => {
+      if(err) res.status(500).send({message: `Error al borrar el producto: ${err}`});
+      res.status(200).send({message:`El producto ha sido eliminado`});
+  });
+});
+
+UPDATE
+let productId = req.params.productId;
+let update = req.body;
+console.log("update: ", update);
+//primer param el id, segundo param un objecto con los campos a actualizar
+Product.findByIdAndUpdate(productId, update, (err, productUpdated) =>{
+  if(err) res.status(500).send({message: `Error al actualizar el producto: ${err}`});
+
+  res.status(200).send({product: productUpdated});

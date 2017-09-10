@@ -23,7 +23,7 @@ app.get('/api/product',(req,res) => {
   Product.find({}, (err, products) => {
     if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`});
     if(!products) return res.status(404).send({message: `No existen productos`});
-    res.send(200, {products});
+    res.send(200, {products :products});
   });
 });
 
@@ -35,12 +35,8 @@ app.get('/api/product/:productId', (req, res) => {
       if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`});
       if(!product) return res.status(404).send({message: `El producto no existe`});
 
-      res.status(200).send({product}); //cuando product: product se puede escribir solo product
-
+      res.status(200).send({product}); //cuando product: product se puede escribir solo produc
   });
-
-
-
 });
 
 //POST subir productos
@@ -75,11 +71,31 @@ app.post('/api/product', (req,res) => {
 
 //PUT actualizar producto
 app.put('/api/product/:productId', (req, res) => {
+  let productId = req.params.productId;
+  let update = req.body;
+console.log("update: ", update);
+  //primer param el id, segundo param un objecto con los campos a actualizar
+  Product.findByIdAndUpdate(productId, update, (err, productUpdated) =>{
+    if(err) res.status(500).send({message: `Error al actualizar el producto: ${err}`});
 
+    res.status(200).send({product: productUpdated});
+
+  });
 });
 
 //DELETE
 app.delete('/api/product/:productId',(req,res) =>{
+
+  let productId = req.params.productId;
+
+  Product.findById(productId, (err, product) => {
+    if(err) res.status(500).send({message: `Error al borrar el producto: ${err}`});
+
+    product.remove(err => {
+        if(err) res.status(500).send({message: `Error al borrar el producto: ${err}`});
+        res.status(200).send({message:`El producto ha sido eliminado`});
+    });
+  });
 
 })
 
