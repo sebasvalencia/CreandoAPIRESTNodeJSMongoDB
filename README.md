@@ -127,3 +127,29 @@ password: {type:String, select:false} el select para q cuando hagamos un get nos
 
 instalamos crypto
 npm install crypto --save
+
+MOdelamos el obj usuario ,
+autenticarse y registrarse,
+passportjs nos permite hacer una autenticacion facilita
+
+Lo mejor es usar token el usu envia un codigo al servidor , el servidor se encarga de traducirlo y ve q usuario es. No se guardan sesiones .
+
+Lo mas usado son los JWT
+queda almacenado en el localstorage
+tiene 3 partes
+cabecera tiene dos partes:
+alg -> algoritmo ej HS256
+typ-> tipo ej JWT
+
+payload tiene n partes:
+ datos q se envian al servidor
+sub-> id con q se identifica en el servidor ,no sea el alamacenado en mongodb
+name-> nombre
+admin -> true
+
+firma de verificacion:
+verifica q sea un token valido
+codifica la cebecera, el payload y el secret q es almacenado en el servidor
+
+En node usamos npm jwt-simple
+se le pasa el payload y el secret el se encarga de codificar
