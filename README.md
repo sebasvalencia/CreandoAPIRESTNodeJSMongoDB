@@ -119,3 +119,11 @@ mongo
 
  __***models/product.js***__
  tiene la definicion del modelo
+
+# Creando un modelo User con mongoose
+Creamos el modelos User.js
+e instalamos npm install bcrypt-nodejs --save
+password: {type:String, select:false} el select para q cuando hagamos un get nos envie la contraseña al cliente para evitar problemas de seguridad
+
+instalamos crypto
+npm install crypto --save
