@@ -183,6 +183,13 @@ comprueba la autorizacion, si no existe envia mensaje de error
 si existe toma el token lo decodifica mira q no haya caducado
 en el payload , autoriza q el usuario tiene el payload
 
+creado una funcion de sigup los guarda en al bd y proporciona un token y pueda acceder a rutas q se le asignen
+
+la funcion sigin q un usuario ya esta registrado y queremos acceder , creamos un token para q acceda
+
+Separamos el codigo q utilizaba la lib de jwt 
+par la fun q crea token y la que lso decodifica
+
 
 
 

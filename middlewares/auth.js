@@ -1,8 +1,9 @@
 'use strict';
 
-const jwt = require('jwt');
-const moment = require('moment');
-const config = require('../config');
+//const jwt = require('jwt');
+//const moment = require('moment');
+//const config = require('../config');
+const services = require('../services');
 
 function isAuth(req,res, next){
 
@@ -12,17 +13,24 @@ function isAuth(req,res, next){
     }
 
     const token = req.headers.authorization.split(" ")[1];//obtenemos la pos 1 del array
-    const payload = jwt.decode(token, config.SECRET_TOKEN);//el conenido en texto decodificado 
+    //const payload = jwt.decode(token, config.SECRET_TOKEN);//el conenido en texto decodificado 
 
     //si ya caduco payload.exp
-    if(payload.exp <= moment().unix()){
+    /*if(payload.exp <= moment().unix()){
         return res.status(401).send({message: `El token ha expirado`});
-    }
+    }*/
 
     //antes de pasarla al controlador final de la ruta
-    req.user = payload.sub;
-    next();
-
+    //req.user = payload.sub;
+    //next();
+    services.decodeToken(token)
+        .then(response => {
+            req.user = response;
+            next();
+        })
+        .catch(response =>{
+            res.status(response.status);
+        });
 }
 
 module.exports = isAuth;
