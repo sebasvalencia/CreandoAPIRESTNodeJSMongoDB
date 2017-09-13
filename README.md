@@ -169,3 +169,25 @@ Los servicios son funciones q nos ayudan en varios momentos
 permite el manejo de fechas en js
 Instalamos npm install --save moment
 en el config creamos: SECRET_TOKEN: 'miclavedetokens'
+
+## Proteger rutas en tu API REST
+
+Crear middleware auth q protega algunas rutas
+Como pasamos el middleware a una rutaq solo sea valida
+en routes/index.js 
+creamos una ruta y antes del llamado de la funcion lo ponemos
+
+Cómo proteger rutas en tu API REST con JSON Web Tokens
+llama primero al middleware 
+comprueba la autorizacion, si no existe envia mensaje de error
+si existe toma el token lo decodifica mira q no haya caducado
+en el payload , autoriza q el usuario tiene el payload
+
+
+
+
+
+
+
+
+
