@@ -153,3 +153,19 @@ codifica la cebecera, el payload y el secret q es almacenado en el servidor
 
 En node usamos npm jwt-simple
 se le pasa el payload y el secret el se encarga de codificar
+
+
+## Como crear un JSON Web Token JWT en tu API REST
+instalar la libreria
+npm install --save jwt-simple
+Creamos un nuevo controlador auth.js
+Se va a encargar del registro y autenticacion de usuarios de nuestro api REST
+Creamos dos funciones
+signUp, signIn y las exportamos
+
+Creamos los servicios services/index.js
+Los servicios son funciones q nos ayudan en varios momentos
+
+permite el manejo de fechas en js
+Instalamos npm install --save moment
+en el config creamos: SECRET_TOKEN: 'miclavedetokens'
